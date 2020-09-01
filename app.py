@@ -6,8 +6,6 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, UserMixin, login_user, logout_user, current_user
 # Подключаем собственный модуль
 from api import get_list
-# Подключаем библиотеку для работы с операционной системы (доступ к переменным окружения)
-import os
 # Подключаем библиотеку для ведения логгирования
 import logging
 
@@ -16,12 +14,6 @@ import logging
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'top secret!'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite'
-app.config['OAUTH_CREDENTIALS'] = {
-    'vk': {
-        'id': '	7583297',
-        'secret': os.environ['SECRET_KEY']
-    },
-}
 
 # Создаём базу данных и инициализируем логин-менеджер
 db = SQLAlchemy(app)

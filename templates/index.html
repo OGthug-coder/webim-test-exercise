@@ -2,10 +2,31 @@
 <html>
     <head>
         <title>Test exercise</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     </head>
-    <body>
-        <p><a 
-            href="https://oauth.vk.com/authorize?client_id=7583297&display=page&redirect_uri=http://localhost:5000/authorize&scope=friends&response_type=token&v=5.52"
-            >Login with Facebook</a></p>
+    <body class="text-center">
+        <main>
+            {% if current_user.is_authenticated %}
+                <div class="container" style="padding: 50px;">
+                    <div class="row">
+                        {% for friend in friends_list %}
+                            <div class="col-lg-3" style="margin-top: 30px;">
+                                <img class="rounded" src="{{ friend.photo_200_orig }}" height="200px"/>
+                                <p>{{friend.first_name + ' ' + friend.last_name}}</p>
+                                <a target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg" href="https://vk.com/id{{ friend.id }}">Page</a>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <a class="btn btn-danger" href="/logout" style="margin-top: 30px;">Logout</a>
+                </div>
+            {% else %}
+                <form class="form-signin" style="max-width: 300px; margin: 200px auto;">
+                    <h3 class="h3 mb-3">
+                        Please sign in
+                    </h3>
+                    <a class="btn btn-lg btn-primary btn-block" href="https://oauth.vk.com/authorize?client_id=7583297&display=page&redirect_uri=http://localhost:5000/authorize&scope=friends&response_type=token&v=5.52">Sign in</a>
+                </form>
+                {% endif %}
+        </main>
     </body>
 </html>

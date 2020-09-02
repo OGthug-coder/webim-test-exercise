@@ -108,9 +108,4 @@ def app_authorize(data):
     login_user(user, True)
     logging.info('%s logged in', current_user.vk_id)
     return redirect(url_for('index'))
-
-
-# Запуск приложения
-if __name__ == '__main__':
-    db.create_all()
-    app.run(debug=True)
+    

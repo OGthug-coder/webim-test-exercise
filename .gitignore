@@ -1,2 +1,3 @@
 secret.txt
 db.sqlite
+__pycache__/

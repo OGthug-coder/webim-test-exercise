@@ -22,4 +22,5 @@ def get_list(user_id):
     # Обработка запроса - декодинг и извлечение JSONа
     r = requests.get(BASE_URL, params=params)
     r.encoding = 'utf-8'
+    print(r.json())
     return r.json()

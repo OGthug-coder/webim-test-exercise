@@ -49,7 +49,7 @@ def index():
     friends_list = None
     if not current_user.is_anonymous:
         # Если пользователь залогинен, получаем список друзей и отображаем его
-        friends_list = get_list(current_user.token)['response']['items']
+        friends_list = get_list(current_user.vk_id)['response']['items']
         logging.info('User %s got list of his friends', current_user.vk_id)
     else:
         logging.info('Someone\'s on site')

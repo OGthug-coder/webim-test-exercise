@@ -3,7 +3,7 @@ import requests
 
 
 # Базовый url api Вконтакте
-BASE_URL = "https://api.vk.com/method/friends.search"
+BASE_URL = "http://api.vk.com/method/friends.search"
 
 
 def get_list(token):

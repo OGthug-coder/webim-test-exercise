@@ -51,7 +51,7 @@ def index():
     if not current_user.is_anonymous:
         # Если пользователь залогинен, получаем список друзей и отображаем его
         friends_list = get_list(current_user.vk_id)['response']['items']
-        friends_list = random.choice(friends_list, k=5)
+        friends_list = random.choices(friends_list, k=5)
 
         logging.info('User %s got list of his friends', current_user.vk_id)
     else:

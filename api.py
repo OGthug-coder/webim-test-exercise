@@ -14,7 +14,7 @@ def get_list(user_id):
     # Параметры запроса
     params = {
         'user_id': user_id,
-        'access_token': '972dc7f7972dc7f7972dc7f75d975e04479972d972dc7f7c87fdfe198bec228ec844c67',
+        'access_token': os.environ['TOKEN'],
         'fields': 'photo_200_orig',
         'v': 5.21, 
     }

@@ -8,6 +8,7 @@ from flask_login import LoginManager, UserMixin, login_user, logout_user, curren
 from api import get_list
 # Подключаем библиотеку для ведения логгирования
 import logging
+import random
 
 
 # Инициализируем приложение и конфигурируем его
@@ -50,6 +51,8 @@ def index():
     if not current_user.is_anonymous:
         # Если пользователь залогинен, получаем список друзей и отображаем его
         friends_list = get_list(current_user.vk_id)['response']['items']
+        friends_list = random.choice(friends_list, k=5)
+
         logging.info('User %s got list of his friends', current_user.vk_id)
     else:
         logging.info('Someone\'s on site')
